@@ -25,7 +25,7 @@ function qwc_add_filters_front() {
 		/* one-argument filters */
 		'wp_mail_from_name' => 20,
 		'woocommerce_order_item_display_meta_value' => 20,
-		'woocommerce_order_items_table' => 20,
+		'woocommerce_order_details_after_order_table_items' => 20,
 		'woocommerce_page_title' => 20,
 		'woocommerce_short_description' => 20,
 		'woocommerce_variation_option_name' => 20,
