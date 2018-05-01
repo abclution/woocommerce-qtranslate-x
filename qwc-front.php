@@ -25,7 +25,7 @@ function qwc_add_filters_front() {
 		/* one-argument filters */
 		'wp_mail_from_name' => 20,
 		'woocommerce_order_item_display_meta_value' => 20,
-		'woocommerce_order_items_table' => 20,
+		'woocommerce_order_details_after_order_table_items' => 20,
 		'woocommerce_page_title' => 20,
 		'woocommerce_short_description' => 20,
 		'woocommerce_variation_option_name' => 20,
@@ -41,7 +41,7 @@ function qwc_add_filters_front() {
 		'woocommerce_gateway_icon' => 20,
 		'woocommerce_order_item_name' => 20,
 		'woocommerce_order_shipping_to_display' => 20,
-		'woocommerce_order_tax_totals' => 20,
+		'woocommerce_order_get_tax_totals' => 20,
 		'woocommerce_product_title' => 20,
 		'woocommerce_rate_label' => 20,
 
@@ -50,6 +50,7 @@ function qwc_add_filters_front() {
 		'woocommerce_cart_item_name' => 20,
 		'woocommerce_cart_item_thumbnail' => 20,
 		'woocommerce_order_subtotal_to_display' => 20,
+		'woocommerce_paypal_get_order_item_name' => 20,
 
 		/* four-argument filters */
 		'woocommerce_format_content' => 20,//function wc_format_content in woocommerce/includes/wc-formatting-functions.php
@@ -63,7 +64,7 @@ function qwc_add_filters_front() {
 	}
 
 	add_filter( 'woocommerce_paypal_args', 'qwc_paypal_args' );
-	add_filter( 'woocommerce_get_product_attributes', 'qwc_get_product_attributes', 5 );
+	add_filter( 'woocommerce_product_get_attributes', 'qwc_get_product_attributes', 5 );
 	//no need add_filter( 'woocommerce_product_default_attributes', 'qwc_product_default_attributes', 5 );
 
 	//below do not seem to need
@@ -99,6 +100,8 @@ function qwc_filter_postmeta($original_value, $object_id, $meta_key = '', $singl
 	//qtranxf_dbg_log_if($object_id==58,'qwc_filter_postmeta: $object_id='.$object_id.' $meta_key:',$meta_key);
 	switch($meta_key){
 		case '_product_attributes':
+		case '_stock':
+		case '_stock_status':
 			return $original_value;
 		default: return qtranxf_filter_postmeta($original_value, $object_id, $meta_key, $single);
 	}
